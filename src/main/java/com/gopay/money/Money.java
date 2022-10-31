@@ -28,4 +28,13 @@ public class Money {
         int totalAmountInPaise = get() - money.get();
         return new Money(totalAmountInPaise / 100, totalAmountInPaise % 100);
     }
+
+    public String format() {
+        return String.format("Rs. %d.%d", getRupee(), Math.abs(getPaise()));
+    }
+
+    @Override
+    public String toString() {
+        return this.format();
+    }
 }

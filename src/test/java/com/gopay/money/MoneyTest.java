@@ -49,4 +49,12 @@ public class MoneyTest {
         assertEquals(-10, result.getRupee());
         assertEquals(-10, result.getPaise());
     }
+
+    @Test
+    public void shouldPrintMoneyInRupeesAndPaise() {
+        assertEquals("Rs. 10.10", new Money(10, 10).format());
+        assertEquals("Rs. -9.90", new Money(-10, 10).format());
+        assertEquals("Rs. 9.90", new Money(10, -10).format());
+        assertEquals("Rs. -10.10", new Money(-10, -10).format());
+    }
 }

@@ -1,24 +1,31 @@
 package com.gopay.money;
 
 public class Money {
-    private int rupee;
-    private int paise;
+    private final int paise;
 
     public Money(int rupee, int paise) {
-        this.rupee = rupee;
-        this.paise = paise;
+        this.paise = rupee * 100 + paise;
     }
 
     public int getRupee() {
-        return rupee;
+        return paise / 100;
     }
 
     public int getPaise() {
+        return paise % 100;
+    }
+
+    public int get() {
         return paise;
     }
 
     public Money add(Money money) {
-        return new Money(getRupee() + money.getRupee() + (getPaise() + money.getPaise()) / 100,
-                (getPaise() + money.getPaise()) % 100);
+        int totalAmountInPaise = get() + money.get();
+        return new Money(totalAmountInPaise / 100, totalAmountInPaise % 100);
+    }
+
+    public Money subtract(Money money) {
+        int totalAmountInPaise = get() - money.get();
+        return new Money(totalAmountInPaise / 100, totalAmountInPaise % 100);
     }
 }

@@ -62,6 +62,6 @@ public class Money implements Comparable<Money> {
 
     @Override
     public int compareTo(Money money) {
-        return this.get() - money.get();
+        return Integer.compare(this.get(), money.get());
     }
 }

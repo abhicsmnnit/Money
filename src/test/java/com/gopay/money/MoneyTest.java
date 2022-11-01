@@ -69,4 +69,15 @@ public class MoneyTest {
         Collections.sort(moneyList);
         assertIterableEquals(Arrays.asList(new Money(-20, -20), new Money(-10, -10), new Money(-10, 10), new Money(10, -10), new Money(10, 10), new Money(20, 20)), moneyList);
     }
+
+    @Test
+    public void shouldCompareMoney() {
+        Money amount1 = new Money(10, 10);
+        Money amount2 = new Money(20, 20);
+        Money amount3 = new Money(20, 20);
+
+        assertEquals(1, amount2.compareTo(amount1));
+        assertEquals(-1, amount1.compareTo(amount2));
+        assertEquals(0, amount3.compareTo(amount2));
+    }
 }

@@ -1,6 +1,6 @@
 package com.gopay.money;
 
-public class Money {
+public class Money implements Comparable<Money> {
     private final int paise;
 
     public Money(int rupee, int paise) {
@@ -36,5 +36,32 @@ public class Money {
     @Override
     public String toString() {
         return this.format();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        return this.get() == ((Money) obj).get();
+    }
+
+    @Override
+    public int hashCode() {
+        return get();
+    }
+
+    @Override
+    public int compareTo(Money money) {
+        return this.get() - money.get();
     }
 }

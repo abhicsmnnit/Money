@@ -2,7 +2,12 @@ package com.gopay.money;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 public class MoneyTest {
 
@@ -56,5 +61,12 @@ public class MoneyTest {
         assertEquals("Rs. -9.90", new Money(-10, 10).format());
         assertEquals("Rs. 9.90", new Money(10, -10).format());
         assertEquals("Rs. -10.10", new Money(-10, -10).format());
+    }
+
+    @Test
+    public void shouldSortMoney() {
+        List<Money> moneyList = Arrays.asList(new Money(10, 10), new Money(-10, 10), new Money(10, -10), new Money(-10, -10), new Money(20, 20), new Money(-20, -20));
+        Collections.sort(moneyList);
+        assertIterableEquals(Arrays.asList(new Money(-20, -20), new Money(-10, -10), new Money(-10, 10), new Money(10, -10), new Money(10, 10), new Money(20, 20)), moneyList);
     }
 }
